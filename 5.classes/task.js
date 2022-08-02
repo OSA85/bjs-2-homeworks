@@ -12,15 +12,8 @@ class PrintEditionItem {
 
     fix() {
         this._state = this.state * 1.5;
-        if (this._state < 0){
-            return this._state = 0;
-        }
-        if(this._state > 100){
-            return this._state = 100;
-        } else {
-             return this._state;
-        }
     }
+
 
     set state(oldState){
         if (oldState <= 0){
@@ -99,29 +92,6 @@ class Library {
         return null;
     }  
 
-
-// Просьба пояснить почему не срабатывает вот этими способами. Спасибо.
-// правильно ли я понял, они не срабатывают правильно со значениями ключей отличающихся от числа, то есть с числами работают а со строками нет.
-    // findBookBy(type, value){
-    // for (let i in this.books){
-    //     let book = Object.entries(this.books[i])
-    //     for (let j in book){
-    //         if (book[j][0] === type && book[j][1]  === value)
-    //             return this.books[i];
-                           
-            
-    //     }
-
-    //     
-    //     // Object.entries(this.books[i]).forEach(([key, val]) => { 
-    //     //             if( key === type && val  === value ){
-    //     //             return this.books[i];
-    //     //              }
-    //     // })
-    //     // }
-    //     return null;
-    // }
-    // }
 
     giveBookByName(bookName){
        let book = this.findBookBy("name", bookName)
