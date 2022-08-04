@@ -39,13 +39,13 @@ class AlarmClock {
             
           
         const checkClock = (clock) => {
-            if (that.getCurrentFormattedTime() === clock.time) clock.func();
+            if (this.getCurrentFormattedTime() === clock.time) clock.func();
         }
 
     }
 
     stop(){
-            clearInterval(this.timerID);
+            clearInterval(this.timerId);
             return this.timerId = null;
 
     }
