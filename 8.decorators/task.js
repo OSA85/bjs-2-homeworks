@@ -21,6 +21,7 @@ return wrapper;
 }
 
 function debounceDecoratorNew(func, delay) {
+  let timeout = null;
   let flag = false;
   return function (...args){
     if (flag){
@@ -32,25 +33,6 @@ function debounceDecoratorNew(func, delay) {
       return result;
   }
 }
-
-// function debounceDecorator2(func, delay) {
-//   let count = 0;
-//   function wrapper() {
-//     wrapper.history = count++;
-//   let flag = false;
-//   return function (...args){
-//     if (flag){
-//       return;  
-//     }
-//     const result = func(...args);
-//     flag = true;
-//     setTimeout(() => flag = false, delay)
-//       return result;
-//   }
-//   }
-//   return wrapper;
-// }
-
 
 function debounceDecorator2(func, delay) {
 
