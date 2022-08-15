@@ -21,11 +21,12 @@ return wrapper;
 }
 
 function debounceDecoratorNew(func, delay) {
-  let timeout = null;
+
   let flag = false;
   return function (...args){
     if (flag){
-      return;  
+    setTimeout(() => flag = false, delay)
+    return;  
     }
     const result = func(...args);
     flag = true;
