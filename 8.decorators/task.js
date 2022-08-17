@@ -21,27 +21,32 @@ return wrapper;
 }
 
 function debounceDecoratorNew(func, delay) {
-
+  let timer;
   let flag = false;
   return function (...args){
-    if (flag){
-    setTimeout(() => flag = false, delay)
-    return;  
+    if (!flag){
+      func.apply(this, ...args);
+      flag = true;  
     }
-    const result = func(...args);
-    flag = true;
-      return result;
+    clearTimeout(timer);
+    timer = setTimeout(() => flag = false, delay);
   }
 }
 
 function debounceDecorator2(func, delay) {
-
-  function wrapper() {
-    wrapper.count ++;
-    return debounceDecoratorNew(func ,delay);
-  }
+  let timer;
+  let flag = false;
   wrapper.count = 0;
-  
+  function wrapper(...args) {
+    wrapper.count ++;
+    if (!flag){
+      func.apply(this, ...args);
+      flag = true;  
+    }
+    clearTimeout(timer);
+    timer = setTimeout(() => flag = false, delay);
+  }
+ 
   return wrapper;
 }
 
